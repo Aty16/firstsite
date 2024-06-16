@@ -1,0 +1,35 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <title>{% block title %}{% endblock %}</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+	</head>
+
+	<body class="container mx-auto flex flex-col items-center h-screen">
+	    
+	    <div class="z-10 flex justify-between w-11/12 sm:h-10 lg:h-16 rounded-b-full fixed *:px-10 *:rounded-b-full">
+	        <button class="lg:w-1/4 bg-fuchsia-400 text-purple-900 lg:text-2xl ml-40 font-bold shadow-md hover:bg-fuchsia-500 hover:text-white hover:ring-2 hover:ring-offset-4 hover:ring-fuchsia-500 hover:scale-110 transition ease-in-out duration-300">Purchase Now!</button>
+	        <div class="flex justify-center w-1/2 *:h-3/4 *:mx-4 *:px-6 *:mb-4 *:pb-2 *:rounded-b-full *:font-bold *:hover:scale-110 *:transition *:ease-in-out *:duration-300">
+	          
+	          {% if request.user.is_authenticated %}
+	            <p>{{ request.user.name }}</p>
+	            <a class="btn-logout" href="{% url 'logout' %}">Log Out</a>
+	          {% else %}
+              <a class="btn-signup" href="{% url 'signup' %}">Sign Up</a>
+              <a class="btn-login" href="{% url 'login' %}">Log In</a>
+            {% endif %}
+            </div>
+	    </div>
+	    
+	    <div class="container mx-auto mt-10 flex flex-col items-center h-screen">
+		
+		    {% block contents %}{% endblock %}
+		
+		</div>
+		
+	</body>
+</html>
