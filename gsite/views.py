@@ -1,6 +1,9 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .forms import SignupForm, LoginForm
+# from django.core.mail import send_mail
+from .forms import SignupForm, LoginForm, ContactForm
+
 
 def  home(request):
     
@@ -38,20 +41,31 @@ def user_logout(request):
     return redirect('home')
 
 
-def projekte(request):
-    return render(request, 'gsite/projekte.html')
+def projects(request):
+    return render(request, 'gsite/projects.html')
 
 
 def services(request):
     return render(request, 'gsite/services.html')
 
 
-def ueberuns(request):
-    return render(request, 'gsite/ueberuns.html')
+def aboutus(request):
+    return render(request, 'gsite/aboutus.html')
 
 
-def kontakt(request):
-    return render(request, 'gsite/kontakt.html')
-
-
-
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # send_mail(
+            #     "Subject here",
+            #     "Here is the message.",
+            #     "from@example.com",
+            #     ["to@example.com"],
+            #     fail_silently=False,
+            # )
+            form.save()
+            return render(request, 'gsite/contsuccess.html')
+    form = ContactForm()
+    context = {'form': form}
+    return render (request, 'gsite/contact.html', context)

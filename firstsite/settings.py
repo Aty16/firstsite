@@ -47,6 +47,8 @@ INSTALLED_APPS = [
 
 TAILWIND_APP_NAME = 'theme'
 
+NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
+
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
@@ -135,3 +137,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# EMAIL_RECEIVING_USER
+# EMAIL_RECEIVING_USER = 'ahmed.aliefter@gmail.com'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

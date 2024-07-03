@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Kontakt{% endblock %}
+
+{% block contents %}
+
+{% load static %}
+
+<div class="flex flex-row justify-center w-screen h-screen bg-cover bg-left" style="background-image: url({% static 'images/contactbg.gif' %})">
+    <form method="POST" class="mt-40 w-1/2 h-fit content-center bg-orange-100 bg-opacity-85 rounded-xl">
+        {% csrf_token %}
+        <div class="h-3/4 flex flex-col items-center mt-4 *:p-4 *:w-full">
+            <div class="form-group">
+                <input type="email" class="form-control rounded-full" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control rounded-full" maxlength="10" name="subject" placeholder="Subject">
+            </div>
+            <div class="form-group h-1/2">
+                <textarea type="text" class="w-full h-full resize-y form-control rounded-lg" maxlength="300" name="message" placeholder="Message"></textarea>
+            </div>
+            <div class="flex flex-row justify-center">
+                <button class="px-2 py-2 bg-orange-500 rounded-full hover:text-white" type="submit">Send</button>
+            </div>
+        <div>
+    </form>
+</div>
+
+<div class="w-full flex flex-row fixed bottom-0 justify-center">
+    <a class="px-2 py-1 bg-orange-100 bg-opacity-50 rounded-lg text-gray-900 text-xl hover:text-orange-100" href="{% url 'home' %}">Return to homepage</a>
+</div>
+
+{% endblock %}
