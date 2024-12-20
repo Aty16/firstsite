@@ -1,4 +1,4 @@
-# fstdjango# firstsite
+# fstdjango
 
 zum Starten:
 
